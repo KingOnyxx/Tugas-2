@@ -1,9 +1,12 @@
 from django.shortcuts import render
 def show_main(request):
     context = {
-        'app':'Cuci Cuci Service',
-        'name': 'Clarence Grady',
-        'class': 'PBP A'
+        'app':'Skin Bundle Inventory',
+        'name': 'Prime',
+        'amount': '5',
+        'desc':'Classic, Spectre, Guardian, Vandal, Melee',
+        'price':'7,100 VP',
+        'category':'Bundle'
 
     }
 
