@@ -6,7 +6,8 @@ class Product(models.Model):
     amount=models.IntegerField()
     desc = models.TextField()
     price = models.IntegerField()
-    category=models.TextField()
+    cat=models.TextField()
+    pub=models.TextField()
     
 
 # Create your models here.
