@@ -6,18 +6,29 @@
     <title>Game Collection</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: Comic Sans MS;
             margin: 20px;
             padding: 20px;
             background-color: #f4f4f4;
         }
+        .h1-container {
+            display: flex;
+            justify-content: center; 
+            align-items: center; 
+            flex-wrap: wrap; 
+        }
         h1 {
             font-size: 28px;
-            text-align: center;
             margin-bottom: 20px;
-            color: #333;
         }
-        h3 {
+        h1#app1 {
+            color: #007bff;
+            margin-right: 10px;
+        }
+        h1#app2 {
+            color: #ff0000;
+        }
+        h3,h6 {
             font-size: 20px;
             margin-top: 10px;
             color: #555;
@@ -30,24 +41,28 @@
     </style>
 </head>
 <body>
-    <h1 style="color: #007bff;">{{ app }}</h1>
+    <h6 style="margin-top: 0;margin-bottom: 0;">Nama    : {{nama}}<br>Kelas   : {{kelas}}</h6>
+    <div class="h1-container">
+        <h1 id="app1">{{app1}}</h1>
+        <h1 id="app2">{{app2}}</h1>
+    </div>
     
     <h3>Name:</h3>
-    <p>{{ name }}</p>
+    <p>{{name}}</p>
     
     <h3>Amount:</h3>
-    <p>{{ amount }}</p>
+    <p>{{amount}}</p>
     
     <h3>Description:</h3>
-    <p>{{ desc }}</p>
+    <p>{{desc}}</p>
     
     <h3>Price:</h3>
-    <p>${{ price }}</p>
+    <p>${{price}}</p>
     
     <h3>Category:</h3>
-    <p>{{ cat }}</p>
+    <p>{{cat}}</p>
     
     <h3>Publisher:</h3>
-    <p>{{ pub }}</p>
+    <p>{{pub}}</p>
 </body>
 </html>
