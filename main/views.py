@@ -1,18 +1,46 @@
 from django.shortcuts import render
-def show_main(request):
-    context = {
-        'app1':'Game ',
-        'app2':'Collections',
-        'name': 'Cyberpunk 2077',
-        'amount':'1',
-        'desc':'An open-world, action-adventure RPG set in the megalopolis of Night City, where you play as a cyberpunk mercenary wrapped-up in a do-or-die fight for survival.',
-        'price':'59.99',
-        'cat':'Action RPG, Open World',
-        'pub':'CD PROJEKT RED',
-        'nama':'Clarence Grady',
-        'kelas':'PBP A'
+from django.http import HttpResponseRedirect
+from main.forms import ProductForm
+from django.urls import reverse
+from main.models import Product
+from django.http import HttpResponse
+from django.core import serializers
 
+def show_main(request):
+    products = Product.objects.all()
+
+    context = {
+        'Name': 'Cyberpunk 2077',
+        'Amount': '1',
+        'Price':'59.99',
+        'Category':'',
+        'Publisher':'',
+        'Description':'',
+        'date_added':'',
+        'products': products
     }
 
     return render(request, "main.html", context)
+
+def create_product(request):
+    form = ProductForm(request.POST or None)
+
+    if form.is_valid() and request.method == "POST":
+        form.save()
+        return HttpResponseRedirect(reverse('main:show_main'))
+
+    context = {'form': form}
+    return render(request, "create_product.html", context)
+def show_xml(request):
+    data = Product.objects.all()
+    return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
+def show_json(request):
+    data = Product.objects.all()
+    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+def show_xml_by_id(request, id):
+    data = Product.objects.filter(pk=id)
+    return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
+def show_json_by_id(request, id):
+    data = Product.objects.filter(pk=id)
+    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
 # Create your views here.
