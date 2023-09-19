@@ -8,15 +8,19 @@ from django.core import serializers
 
 def show_main(request):
     products = Product.objects.all()
+    total=0
+    for item in products:
+        total+=item.Amount
 
     context = {
-        'Name': 'Cyberpunk 2077',
-        'Amount': '1',
-        'Price':'59.99',
+        'Name': '',
+        'Amount': '',
+        'Price':'',
         'Category':'',
         'Publisher':'',
         'Description':'',
         'date_added':'',
+        'total':total,
         'products': products
     }
 
