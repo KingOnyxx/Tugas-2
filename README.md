@@ -111,3 +111,51 @@ path('json/<int:id>/', show_json_by_id, name='show_json_by_id')
 ...
 ```
 ![Postman](image.png)
+# Tugas 4
+## 1. Apa itu Django UserCreationForm, dan jelaskan apa kelebihan dan kekurangannya?
+Django UserCreationForm adalah untuk membuat user baru yang dapat digunakan dengan membuat form pendaftaran pengguna 
+Kelebihan Django UserCreationForm:
+
+- Mudah digunakan dan integrasi dengan Django
+- Otomatis melakukan validasi data
+- Menggunakan password hashing untuk menjaga keamanan data pengguna
+
+Kekurangan Django UserCreationForm:
+
+- Hanya menangani beberapa field yang penting, seperti username, email, dan password
+- Tidak menangani beberapa fitur tambahan yang mungkin diperlukan, seperti konfirmasi email atau pengaturan profil pengguna
+
+## 2. Apa perbedaan antara autentikasi dan otorisasi dalam konteks Django, dan mengapa keduanya penting?
+Autentikasi adalah proses pencocokan identitas user (username ataupun email). Jika ada match maka akan dilanj
+utkan login user tersebut. Sedangkan otorisasi merujuk pada akses menu dan fitur aplikasi berdasarkan hak akses user saat ini. 
+
+## 3. Apa itu cookies dalam konteks aplikasi web, dan bagaimana Django menggunakan cookies untuk mengelola data sesi pengguna?
+Cookies dalam konteks aplikasi web adalah kumpulan data kecil yang disimpan di peramban pengguna. Cookies digunakan untuk berbagai tujuan, seperti mengingat preferensi pengguna, menyimpan data login, atau mengidentifikasi pengguna yang telah mengunjungi situs web sebelumnya.
+
+Django menggunakan cookies untuk mengelola data sesi pengguna. Sesi adalah cara untuk menyimpan informasi tentang pengguna yang sedang mengakses aplikasi web. Informasi ini dapat digunakan untuk berbagai tujuan, seperti mengingat preferensi pengguna atau menyimpan data login.
+
+Django menggunakan middleware untuk mengelola cookies. Middleware adalah komponen yang dapat dimasukkan ke dalam proses request-response Django untuk menambahkan atau mengubah fungsi. Middleware cookies mengatur pembuatan, pengiriman, dan penerimaan cookies.
+## 4. Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai?
+
+Manfaat Cookies:
+
+Cookies memungkinkan aplikasi web untuk mengingat status pengguna dan menyimpan informasi penting seperti preferensi pengguna, data login, dan item dalam keranjang belanja.
+Cookies juga memungkinkan pelacakan perilaku pengguna, yang dapat digunakan untuk personalisasi dan analisis.
+
+Risiko Cookies:
+
+Meskipun cookies sendiri cukup aman dan tidak dapat menyebar virus atau malware, mereka dapat menimbulkan beberapa masalah privasi dan keamanan jika tidak ditangani dengan benar.
+Misalnya, cookies dapat digunakan untuk melacak aktivitas web pengguna, yang dapat menimbulkan masalah privasi.
+Jika cookies tidak ditangani dengan benar, mereka dapat menjadi target manipulasi dan penyalahgunaan. Misalnya, supercookie dan zombie cookie dapat menimbulkan masalah keamanan.
+Cookies juga dapat memperburuk kinerja, terutama untuk koneksi data seluler, karena mereka dikirim dengan setiap permintaan.
+
+## 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+1. Menambahkan models baru di `models.py` untuk user.
+2. Menambahkan function-function untuk register login user dan logout user di `views.py`.
+3. menambahkan urls untuk menampilkan function function untuk register login user dan logout user
+4. menambahkan file template `login.html` dan `register.html`.
+
+Bonus:
+5. Mengimplementasikan function `update_amount` untuk menambahkan amount untuk item.
+6. Menambahkan button di `maint.html` untuk menambahkan dan mengurangi amount untuk game dengan function `update_amount`
+7. Membuat path baru untuk `update-amount` dengan parameter `productid`
