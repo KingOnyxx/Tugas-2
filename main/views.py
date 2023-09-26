@@ -46,16 +46,9 @@ def create_product(request):
             
             for item in products:
                 if item.Name== request.POST.get('Name'):
-                    print(request.POST.get('Name'))
-                    item.Amount += int(request.POST.get('Amount',0))  # Convert to int, default to 0 if not found
+                    item.Amount += int(request.POST.get('Amount',0))
                     item.save()
                     return HttpResponseRedirect(reverse('main:show_main'))
-            # existing_product = Product.objects.filter(Name=product.Name).first()
-
-            # if existing_product:
-            #     existing_product.save()
-                # product.Amount+=request.Amount
-            # else:
             product.save()
             return HttpResponseRedirect(reverse('main:show_main'))
     context = {'form': form}
@@ -122,7 +115,4 @@ def update_amount(request, product_id):
                 product.delete()                
     
     return HttpResponseRedirect(request.META.get("HTTP_REFERER", "/"))
-
-
-
 # Create your views here.

@@ -27,7 +27,7 @@ ___
 <br>
 
 # Tugas 3
-## 2. Apa perbedaan antara form POST dan form GET dalam Django?
+## 1. Apa perbedaan antara form POST dan form GET dalam Django?
 ### Form Post:
 - Form POST adalah method yang digunakan untuk mengirimkan data pada web seperti input text ataupun radio button.
 - Data yang dikirim melalui HTTP request adalah data berupa teks biasa (text).
@@ -156,6 +156,7 @@ Cookies juga dapat memperburuk kinerja, terutama untuk koneksi data seluler, kar
 4. menambahkan file template `login.html` dan `register.html`.
 
 Bonus:
+
 5. Mengimplementasikan function `update_amount` untuk menambahkan amount untuk item.
 6. Menambahkan button di `maint.html` untuk menambahkan dan mengurangi amount untuk game dengan function `update_amount`
 7. Membuat path baru untuk `update-amount` dengan parameter `productid`
