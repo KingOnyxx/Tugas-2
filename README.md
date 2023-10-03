@@ -160,3 +160,84 @@ Bonus:
 5. Mengimplementasikan function `update_amount` untuk menambahkan amount untuk item.
 6. Menambahkan button di `maint.html` untuk menambahkan dan mengurangi amount untuk game dengan function `update_amount`
 7. Membuat path baru untuk `update-amount` dengan parameter `productid`
+<br/>
+# Tugas 5
+##  Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya.
+
+Element selector memungkinkan untuk memilih elemen HTML berdasarkan nama elemennya. Ini adalah selector paling dasar dalam CSS dan digunakan untuk menerapkan style ke semua elemen dengan nama yang sesuai.
+Element selector berguna ketika ingin menerapkan gaya umum ke semua elemen dengan nama yang sama, seperti mengubah gaya teks untuk semua `<p>` dalam dokumen HTML.
+## Jelaskan HTML5 Tag yang kamu ketahui.
+- head: Tag `<head>` digunakan untuk menyediakan informasi meta-data mengenai dokumen HTML, seperti judul halaman, tautan ke file CSS, dan lainnya.
+
+- body: Tag `<body>` berisi konten utama dari dokumen HTML, seperti teks, gambar, elemen-elemen HTML lainnya, dan tampilan halaman yang akan ditampilkan kepada pengguna.
+
+- footer: Tag `<footer>` digunakan untuk menandai bagian akhir dari sebuah elemen atau dokumen HTML. Biasanya, digunakan untuk informasi penutup atau hak cipta.
+
+- button: Tag `<button>` digunakan untuk membuat tombol yang dapat diklik oleh pengguna. Ini sering digunakan dalam formulir atau untuk memicu tindakan JavaScript.
+
+- table: Tag `<table>` digunakan untuk membuat tabel dalam dokumen HTML.
+
+- tr: Tag `<tr>` digunakan dalam tabel untuk mendefinisikan baris.
+
+- td: Tag `<td>` digunakan dalam tabel untuk mendefinisikan sel (cell) data.
+
+- th: Tag `<th>` digunakan dalam tabel untuk mendefinisikan sel header (kolom).
+
+- div: Tag `<div>` digunakan untuk mengelompokkan elemen-elemen HTML dan memungkinkan Anda untuk mengatur gaya atau merancang tampilan.
+
+- em: Tag `<em>` digunakan untuk menekankan teks, biasanya dengan memberikan penekanan visual seperti huruf miring.
+
+- form: Tag `<form>` digunakan untuk membuat formulir yang mengumpulkan data dari pengguna.
+
+- span: Tag `<span>` digunakan untuk mengelompokkan elemen-elemen teks atau elemen dalam dokumen dan biasanya tidak mengubah tampilan atau gaya mereka secara signifikan.
+
+- strong: Tag `<strong>` digunakan untuk menandai teks yang penting atau memiliki penekanan yang lebih kuat daripada teks biasa.
+
+- title: Tag `<title>` digunakan dalam elemen `<head>` untuk menentukan judul halaman web yang akan ditampilkan di tab peramban.
+
+- nav: Tag `<nav>` digunakan untuk mengelompokkan tautan navigasi pada situs web.
+
+- ul: Tag `<ul>` digunakan untuk membuat daftar tak-terurut (unordered list).
+
+- li: Tag `<li>` digunakan dalam daftar tak-terurut atau terurut untuk mendefinisikan item dalam daftar.
+
+- ol: Tag `<ol>` digunakan untuk membuat daftar terurut (ordered list).
+
+- img: Tag `<img>` digunakan untuk menampilkan gambar dalam halaman web.
+
+- a: Tag `<a>` digunakan untuk membuat tautan (link) ke halaman lain atau sumber eksternal.
+
+- input: Tag `<input>` digunakan dalam formulir HTML untuk menerima input dari pengguna, seperti teks, kata sandi, atau kotak centang.
+
+- label: Tag `<label>` digunakan untuk memberikan label atau keterangan untuk elemen formulir, yang membantu pengguna memahami tujuan elemen tersebut.
+
+## Jelaskan perbedaan antara margin dan padding.
+Perbedaan antara Margin dan Padding:
+
+- Margin: Margin adalah ruang di sekitar elemen HTML. Ini adalah jarak antara elemen tersebut dan elemen-elemen lain di sekitarnya. Margin tidak memiliki latar belakang atau warna dan mengontrol jarak antara elemen dan elemen-elemen lainnya.
+- Padding: Padding adalah ruang di dalam elemen HTML, di antara konten elemen dan batas elemen tersebut. Padding mengontrol jarak antara konten elemen dan batas elemen itu sendiri. Padding dapat memiliki latar belakang atau warna.
+## Jelaskan perbedaan antara framework CSS Tailwind dan Bootstrap. Kapan sebaiknya kita menggunakan Bootstrap daripada Tailwind, dan sebaliknya?
+Tailwind CSS:
+
+- Manfaat: Tailwind CSS adalah framework CSS utility-first yang memberikan fleksibilitas tinggi dalam membangun tata letak dan komponen. Ini memungkinkan pengembang untuk membuat desain yang sangat kustomisasi dengan menggabungkan kelas-kelas utilitas.
+- Waktu yang Tepat: Tailwind cocok digunakan jika ingin desain yang sangat kustom dan siap menghabiskan waktu dalam menentukan kelas-kelas utilitas yang sesuai.
+
+Bootstrap:
+
+- Manfaat: Bootstrap adalah framework CSS yang siap pakai dengan sejumlah besar komponen dan gaya pra-didefinisikan. Ini memungkinkan pengembangan cepat dan desain yang konsisten.
+- Waktu yang Tepat: Bootstrap sangat cocok jika ingin membangun situs web dengan cepat tanpa perlu merancang banyak gaya atau komponen dari awal. Ini juga berguna dalam pengembangan web responsif.
+
+Kapan Menggunakan Bootstrap atau Tailwind:
+
+- Bootstrap: Jika ingin membangun situs dengan cepat, tidak memiliki banyak pengalaman dalam desain web. Framework Bootstrap hanya dengan mematuhi konvensi desain Bootstrap. Ini juga cocok untuk proyek dengan batas waktu yang ketat.
+- Tailwind CSS: Jika ingin memiliki kendali penuh atas desain, memiliki pengalaman desain web yang lebih besar, dan ingin membuat tata letak yang sangat kustomisasi. Tailwind cocok untuk proyek-proyek yang membutuhkan desain unik dan memiliki waktu untuk menyesuaikan setiap detail desain.
+## Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+1. Menambahkan function edit_product untuk mengubah data item yang ada dan delete_product untuk menghapus item yang ada.
+2. Menambahkan path di `urls.py` untuk 2 function tersebut.
+3. Membuat file html baru untuk edit_product.
+4. Menambahkan framework bootstrap di base.html.
+5. Memanggil file cssnya di base.html.
+6. Menambahkan navbar di main
+7. Mengubah tabel yang ada di main dengan menggunakan class Card (card) dari bootstrap untuk menampilkan item yang ada di database.
+8. Dengan menggunakan card, saya membuat header untuk nama item, body untuk data-data lainnya, dan footer untuk tanggal masukknya data.
+9. Mengubah button yang ada di main dengan menggunkan class Button (btn) dari bootstrap.

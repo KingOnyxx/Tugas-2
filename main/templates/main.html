@@ -1,39 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
+{% block content %}
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Collections</title>
     <style>
-        body {
+        body{
+            background-color: #53565A !important;
+            overflow-x: hidden;
+        }
+        .h1-container {
             font-family: Comic Sans MS;
-                margin: 20px;
-                padding: 20px;
-                background-color: #f4f4f4;
-            }
-            .h1-container {
-                display: flex;
-                justify-content: center; 
-                align-items: center; 
-                flex-wrap: wrap; 
-            }
-            h1 {
-                font-size: 28px;
-                margin-bottom: 20px;
-            }
-            h1#app1 {
-                color: #007bff;
-                margin-right: 10px;
-            }
-            h1#app2 {
+            display: flex;
+            justify-content: center; 
+            align-items: center; 
+            flex-wrap: wrap; 
+        }
+        h1 {
+            font-family: Comic Sans MS;
+
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        h1#app1 {
+            font-size: 48px;
+            color: #007bff;
+            margin-right: 10px;
+        }
+        h1#app2 {
+            font-size: 48px;
             color: #ff0000;
         }
-        h3,h6 {
-            font-size: 20px;
+        h5,a {
+            font-family: Comic Sans MS;
+            font-size: 15px;
             margin-top: 10px;
             color: #555;
         }
         p {
+            font-family: Comic Sans MS;
             font-size: 18px;
             margin-bottom: 20px;
             color: #777;
@@ -53,92 +55,154 @@
             vertical-align: middle;
             width: min-content;
         }
+            
         #desc{
             text-align: left;
-        }
-        /* .amount-control {
-            display: flex;
-            align-items: center;
-        } */
-
+        }            
         .amount td {
-            width: 0; /* Adjust the width as needed */
+            width: 0; 
         }
-
+        
         .amount button {
-            /* margin: 0 1px;    */
             margin-left: 0%;
             margin-right: 0%;
         }
         .amount-1{
             font-weight: bold;
-
+        
+        }
+        .container{
+            font-family: Comic Sans MS;
+        }
+        .btn-custom {
+        background-color: #fff !important; /* Dark background color by default */
+        color: #000000 !important; /* White text color by default */
+        border: 1px solid #000 !important; /* Dark border by default */
+        transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out !important;
+        }
+        .btn-custom:hover, #increment, #increment10 {
+            background-color: #218838 !important; /* Green background color on hover */
+            color: #fff !important; /* White text color on hover */
+            border: 1px solid #218838 !important; /* Green border on hover */
+        }
+        .btn-custom:active, #increment, #increment10{
+            background-color: #17702e !important; /* Darker green background when clicked */
+            border: 1px solid #17702e !important; /* Darker green border when clicked */
+        }
+        .btn-custom:hover, #decrement, #decrement10{
+            background-color: #ffffff !important; /* Green background color on hover */
+            color: #fff !important; /* White text color on hover */
+            border: 1px solid #218838 !important; /* Green border on hover */
+        }
+        .btn-custom:active, #decrement, #decrement10{
+            background-color: #ff0000 !important; /* Darker green background when clicked */
+            border: 1px solid #ff0000 !important; /* Darker green border when clicked */
         }
         
-        </style>
+    </style>
 </head>
-
-{% extends 'base.html' %}
-{% block content %}
+<nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" aria-disabled="true">Clarence Grady</a>
+        <a class="navbar-brand" aria-disabled="true">PBP A</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active btn-outline-primary" href="{% url 'main:create_product' %}">
+                        <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            Add New Game
+                        </button>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        More Stuff
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'main:show_xml' %}">XML</a>
+                    </li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="{% url 'main:show_json' %}">JSON</a>
+                    </li>
+                </ul>
+            </ul>
+        </div>
+        <div class="d-flex justify-content-end">
+            <a class="nav-link active btn-outline-danger" href="{% url 'main:logout' %}">
+                <button class="btn btn-outline-danger" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    LOG OUT
+                </button>
+            </a>
+        </div>
+    </div> 
+</nav>
 <body>
-    <h6 style="margin-top: 0;margin-bottom: 0;">Nama    : {{user}}<br>Kelas   : PBP A</h6>
     <div class="h1-container">
         <h1 id="app1">Game</h1>
         <h1 id="app2">Collections</h1>
     </div>
-    <p>Kamu telah menyimpan {{total}} game di aplikasi ini</p>
-    <table style="border-style: solid ;">
-        <thead>
-                <tr>
-                <th>Name</th>
-                <th style="width: fit-content;">Amount</th>
-                <th>Price</th>
-                <th>Category</th>
-                <th>Publisher</th>
-                <th>Description</th>
-                <th>Date Added</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for product in products %}
-        <tr>
-            <td>{{ product.Name }}</td>
-            <td style="width: fit-content;">
-                <form method="POST" action="{% url 'main:update_amount' product.id %}">
-                    {% csrf_token %}
-                    <div class="amount">
-                        <button type="submit" name="decrement10" value="10">-10</button>
-                        <button type="submit" name="decrement" value="1">-1</button>
-                        <span id="amount-1" style=>{{ product.Amount }}</span>
-                        <button type="submit" name="increment" value="1">+1</button>
-                        <button type="submit" name="increment10" value="10">+10</button>
+    <!-- <div class="container"> -->
+        <div class="row">
+            <div class="col-md-6">
+                <p style="color: black;">Kamu telah menyimpan {{total}} game di aplikasi ini</p>
+            </div>
+            <div class="col-md-6 text-end">
+                <p style="color: black;margin-right: 1  0px;">Sesi terakhir login: {{ last_login }}</p>
+            </div>
+        </div>
+    <!-- </div> -->
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-20">
+                <div class="d-flex flex-wrap justify-content-between">
+                    {% for product in products %}
+                    <div class="card text-dark bg-dark border-primary mb-3 shadow rounded-3" style="width: 20rem; height: 30rem; display: inline-flex;">
+                        <div class="card-header bg-info text-dark" style="font-size:x-large;">{{product.Name}}
+                            <span class="d-flex justify-content-end">
+                            <a href="{% url 'main:edit_product' product.id %}" class="btn btn-outline-primary">
+                                Edit
+                            </a>
+                            <a href="{% url 'main:delete_product' product.id %}" class="btn btn-outline-danger">
+                                Delete
+                            </a>
+                            </span>
+                        </div>
+                        <div class="card-body">
+                        <form method="POST" action="{% url 'main:update_amount' product.id %}">
+                            {% csrf_token %}
+                            <div class="d-flex justify-content-center">
+                                <button id="decrement10" class="btn btn-custom me-2" type="submit" name="decrement10" value="-10" style="font-family: Comic Sans MS;">-10</button>
+                                <button id="decrement" class="btn btn-custom me-2" type="submit" name="decrement" value="-1" style="font-family: Comic Sans MS;">-1</button>
+                                <span id="amount-1" style="padding: 10px;" class="text-white mt-auto">{{ product.Amount }}</span>
+                                <button id="increment" class="btn btn-custom me-2" type="submit" name="increment" value="+1" style="font-family: Comic Sans MS;">+1</button>
+                                <button id="increment10" class="btn btn-custom me-2" type="submit" name="increment10" value="+10" style="font-family: Comic Sans MS;">+10</button>
+                            </div>
+                        </form>
+                        </br>
+                        <h6 class="card-subtitle mb-2 text-white">Category: {{product.Category}}</h6>
+                        </br>
+                        <h6 class="card-subtitle mb-2 text-white">Publisher: {{product.Publisher}}</h6>
+                        <p class="card-text">{{product.Description}}</p>
+                        <h6 class="card-subtitle mb-2 text-white">${{product.Price}}</h6>
+                        </div>
+                        <div class="card-footer bg-info mt-auto ">
+                        <small class="text-dark">Date added: {{product.date_added}}</small>
+                        </div>
                     </div>
-                </form>
-            </td>
-            <td>${{ product.Price }}</td>
-            <td>{{ product.Category }}</td>
-            <td>{{ product.Publisher }}</td>
-            <td>{{ product.Description }}</td>
-            <td>{{ product.date_added }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-    </table>
-    
-    <br />
-    
-    <h5>Sesi terakhir login: {{ last_login }}</h5>
-    <a href="{% url 'main:create_product' %}">
-        <button>
-            Add New Game
-        </button>
-    </a>
-    <a href="{% url 'main:logout' %}">
-        <button>
-            Logout
-        </button>
-    </a>
-    
+                    {% endfor %}
+                    <a href="{% url 'main:create_product' %}" class="text-dark stretched-link" style="font-size: 100px; margin-top: 0px;">
+                        <div class="card text-center bg-dark border-primary mb-3 shadow rounded-3" style="width: 20rem; height: 30rem; display: inline-flex; margin: 0; padding: 0;">
+                            <div class="card-body btn btn-info btn-lg d-flex align-items-center justify-content-center">
+                                <span class="text-secondary" style="font-size: 150px;">+</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+        
     {% endblock content %}
 </body>
 </html>
