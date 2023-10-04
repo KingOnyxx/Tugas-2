@@ -75,28 +75,28 @@
             font-family: Comic Sans MS;
         }
         .btn-custom {
-        background-color: #fff !important; /* Dark background color by default */
-        color: #000000 !important; /* White text color by default */
-        border: 1px solid #000 !important; /* Dark border by default */
+        background-color: #fff !important; 
+        color: #000000 !important;
+        border: 1px solid #000 !important;
         transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out !important;
         }
         .btn-custom:hover, #increment, #increment10 {
-            background-color: #218838 !important; /* Green background color on hover */
-            color: #fff !important; /* White text color on hover */
-            border: 1px solid #218838 !important; /* Green border on hover */
+            background-color: #218838 !important;
+            color: #fff !important; 
+            border: 1px solid #218838 !important;
         }
         .btn-custom:active, #increment, #increment10{
-            background-color: #17702e !important; /* Darker green background when clicked */
-            border: 1px solid #17702e !important; /* Darker green border when clicked */
+            background-color: #17702e !important;
+            border: 1px solid #17702e !important;
         }
         .btn-custom:hover, #decrement, #decrement10{
-            background-color: #ffffff !important; /* Green background color on hover */
-            color: #fff !important; /* White text color on hover */
-            border: 1px solid #218838 !important; /* Green border on hover */
+            background-color: #ffffff !important;
+            color: #fff !important; 
+            border: 1px solid #218838 !important;
         }
         .btn-custom:active, #decrement, #decrement10{
-            background-color: #ff0000 !important; /* Darker green background when clicked */
-            border: 1px solid #ff0000 !important; /* Darker green border when clicked */
+            background-color: #ff0000 !important;
+            border: 1px solid #ff0000 !important;
         }
         
     </style>
@@ -109,7 +109,7 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link active btn-outline-primary" href="{% url 'main:create_product' %}">
-                        <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <button class="btn btn-outline-primary" type="button" aria-expanded="false" aria-label="Toggle navigation">
                             Add New Game
                         </button>
                     </a>
@@ -141,7 +141,6 @@
         <h1 id="app1">Game</h1>
         <h1 id="app2">Collections</h1>
     </div>
-    <!-- <div class="container"> -->
         <div class="row">
             <div class="col-md-6">
                 <p style="color: black;">Kamu telah menyimpan {{total}} game di aplikasi ini</p>
@@ -150,7 +149,6 @@
                 <p style="color: black;margin-right: 1  0px;">Sesi terakhir login: {{ last_login }}</p>
             </div>
         </div>
-    <!-- </div> -->
     
     <div class="container">
         <div class="row justify-content-center">
@@ -191,7 +189,7 @@
                         </div>
                     </div>
                     {% endfor %}
-                    <a href="{% url 'main:create_product' %}" class="text-dark stretched-link" style="font-size: 100px; margin-top: 0px;">
+                    <a href="{% url 'main:create_product' %}" class="text-dark" style="font-size: 100px; margin-top: 0px;">
                         <div class="card text-center bg-dark border-primary mb-3 shadow rounded-3" style="width: 20rem; height: 30rem; display: inline-flex; margin: 0; padding: 0;">
                             <div class="card-body btn btn-info btn-lg d-flex align-items-center justify-content-center">
                                 <span class="text-secondary" style="font-size: 150px;">+</span>
