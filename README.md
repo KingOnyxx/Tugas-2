@@ -241,3 +241,47 @@ Kapan Menggunakan Bootstrap atau Tailwind:
 7. Mengubah tabel yang ada di main dengan menggunakan class Card (card) dari bootstrap untuk menampilkan item yang ada di database.
 8. Dengan menggunakan card, saya membuat header untuk nama item, body untuk data-data lainnya, dan footer untuk tanggal masukknya data.
 9. Mengubah button yang ada di main dengan menggunkan class Button (btn) dari bootstrap.
+
+# Tugas 6
+## 1. Jelaskan perbedaan antara asynchronous programming dengan synchronous programming.
+- Synchronous programming adalah proses yang berjalan secara berurutan, satu per satu. Jika ada proses yang membutuhkan waktu lama, maka proses lainnya harus menunggu hingga proses tersebut selesai.
+- Asynchronous programming adalah proses yang berjalan secara bersamaan. Jika ada proses yang membutuhkan waktu lama, maka proses lainnya tidak perlu menunggu hingga proses tersebut selesai.
+## 2. Dalam penerapan JavaScript dan AJAX, terdapat penerapan paradigma event-driven programming. Jelaskan maksud dari paradigma tersebut dan sebutkan salah satu contoh penerapannya pada tugas ini.
+- Event-driven programming adalah proses yang berjalan berdasarkan event yang terjadi. Jika ada event yang terjadi, maka proses akan dijalankan.
+- Contoh penerapannya pada tugas ini adalah ketika user mengklik tombol edit, maka akan muncul form edit dan ketika user mengklik tombol delete, maka product akan terhapus.
+## 3. Jelaskan penerapan asynchronous programming pada AJAX.
+- AJAX menggunakan asynchronous programming untuk mengirim dan menerima data dari server tanpa harus memuat ulang halaman web.
+- AJAX menggunakan XMLHttpRequest (XHR) untuk mengirim dan menerima data dari server.
+## 4. Pada PBP kali ini, penerapan AJAX dilakukan dengan menggunakan Fetch API daripada library jQuery. Bandingkanlah kedua teknologi tersebut dan tuliskan pendapat kamu teknologi manakah yang lebih baik untuk digunakan.
+Fetch API adalah API JavaScript bawaan yang menyediakan antarmuka untuk mengambil dan mengirim permintaan HTTP. 
+
+Kelebihan dari Fetch API adalah:
+
+- Lebih ringan dan cepat daripada jQuery karena tidak memerlukan library tambahan.
+- Lebih modern dan mendukung fitur terbaru seperti Promise dan async/await.
+- Lebih mudah digunakan dan memiliki sintaks yang lebih sederhana.
+
+Kekurangan dari Fetch API adalah:
+
+- Tidak mendukung fitur cross-domain request pada browser lama.
+- Tidak memiliki dukungan untuk fitur tertentu seperti JSONP dan timeout.
+
+jQuery adalah library JavaScript yang menyediakan antarmuka yang mudah digunakan untuk berinteraksi dengan DOM, membuat animasi, dan mengirim permintaan HTTP. 
+
+Kelebihan dari jQuery adalah:
+
+- Mendukung fitur cross-domain request pada browser lama dengan menggunakan teknik JSONP.
+- Memiliki dukungan untuk fitur tertentu seperti timeout dan cache control.
+
+Kekurangan dari jQuery adalah:
+
+- Lebih berat dan lambat daripada Fetch API karena memuat library tambahan.
+- Lebih kuno dan tidak mendukung fitur terbaru seperti Promise dan async/await.
+
+Dalam konteks pengembangan web modern, Fetch API lebih baik karena lebih ringan, cepat, dan modern. Namun, jika perlu mendukung browser lama atau membutuhkan fitur tertentu seperti JSONP atau timeout, maka jQuery bisa menjadi pilihan yang lebih baik.
+
+## 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+1. Menambahkan function `create_product_ajax` untuk menambahkan item baru dengan menggunakan ajax, `edit_product_ajax` untuk mengubah data item yang ada dengan ajax dan `delete_product_ajax` untuk menghapus item yang ada dengan ajax.
+2. Menambahkan path di `urls.py` untuk 3 function tersebut.
+3. Membuat function dan async function di `main.html` agar dapat merefresh card secara otomatis.
+4. Menambahkan modal di `main.html` untuk menampilkan form add product dan edit product.

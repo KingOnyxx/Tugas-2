@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 import datetime
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseNotFound, HttpResponseRedirect
 from main.forms import ProductForm
 from django.urls import reverse
 from main.models import Product
@@ -12,6 +12,8 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
+
 @login_required(login_url='/login')
 def show_main(request):
     products = Product.objects.filter(user=request.user)
@@ -53,18 +55,23 @@ def create_product(request):
             return HttpResponseRedirect(reverse('main:show_main'))
     context = {'form': form}
     return render(request, "create_product.html", context)
+
 def show_xml(request):
     data = Product.objects.all()
     return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
+
 def show_json(request):
     data = Product.objects.all()
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+
 def show_xml_by_id(request, id):
     data = Product.objects.filter(pk=id)
     return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
+
 def show_json_by_id(request, id):
     data = Product.objects.filter(pk=id)
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+
 def register(request):
     form = UserCreationForm()
 
@@ -76,6 +83,7 @@ def register(request):
             return redirect('main:login')
     context = {'form':form}
     return render(request, 'register.html', context)
+
 def login_user(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -88,11 +96,13 @@ def login_user(request):
             return response
     context = {}
     return render(request, 'login.html', context)
+
 def logout_user(request):
     logout(request)
     response = HttpResponseRedirect(reverse('main:login'))
     response.delete_cookie('last_login')
     return response
+
 def update_amount(request, product_id):
     product = Product.objects.get(id=product_id)
     
@@ -115,6 +125,7 @@ def update_amount(request, product_id):
                 product.delete()                
     
     return HttpResponseRedirect(request.META.get("HTTP_REFERER", "/"))
+
 def edit_product(request, id):
     # Get product berdasarkan ID
     product = Product.objects.get(pk = id)
@@ -129,6 +140,7 @@ def edit_product(request, id):
 
     context = {'form': form}
     return render(request, "edit_product.html", context)
+
 def delete_product(request, id):
     # Get data berdasarkan ID
     product = Product.objects.get(pk = id)
@@ -137,4 +149,76 @@ def delete_product(request, id):
     # Kembali ke halaman awal
     return HttpResponseRedirect(reverse('main:show_main'))
 
+def get_product_json(request):
+    product_item = Product.objects.filter(user=request.user)
+    return HttpResponse(serializers.serialize('json', product_item))
+
+@csrf_exempt
+def add_product_ajax(request):
+    if request.method == 'POST':
+        name = request.POST.get("Name")
+        amount = request.POST.get("Amount")
+        price = request.POST.get("Price")
+        category = request.POST.get("Category")
+        publisher = request.POST.get("Publisher")
+        description = request.POST.get("Description")
+        user = request.user
+
+        products = Product.objects.all()
+        existing_product = products.filter(Name=name).first()
+        if existing_product:
+            existing_product.Amount += int(amount)
+            existing_product.save()
+        else:
+            new_product = Product(Name=name, Amount=amount, Price=price, Category=category, Publisher=publisher, Description=description, user=user)
+            new_product.save()
+
+        return HttpResponse(b"CREATED", status=201)
+
+    return HttpResponseNotFound()
+
+@csrf_exempt
+def edit_product_ajax(request):
+    if request.method == 'POST':
+        id = request.POST.get("id")
+        name = request.POST.get("Name")
+        amount = request.POST.get("Amount")
+        price = request.POST.get("Price")
+        category = request.POST.get("Category")
+        publisher = request.POST.get("Publisher")
+        description = request.POST.get("Description")
+        user = request.user
+
+        product = Product.objects.get(pk = id)
+        product.Name = name
+        product.Amount = amount
+        product.Price = price
+        product.Category = category
+        product.Publisher = publisher
+        product.Description = description
+        product.user = user
+        product.save()
+
+        return HttpResponse(b"CREATED", status=201)
+
+    return HttpResponseNotFound()
+
+@csrf_exempt
+def delete_product_ajax(request):
+    id = request.DELETE.get("id")
+    product = Product.objects.get(pk = id)
+    product.delete()
+    return HttpResponse(b"CREATED", status=201)
+
+@csrf_exempt
+def update_amount_ajax(request):
+    product = Product.objects.get(pk=request.POST.get('id'))
+    print(product.Name)
+    value = request.POST.get('value')
+    product.Amount += int(value)
+    if product.Amount <= 0:
+        product.delete()
+    else: 
+        product.save()
+    return HttpResponseRedirect(request.META.get("HTTP_REFERER", "/"))
 # Create your views here.
