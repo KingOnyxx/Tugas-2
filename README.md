@@ -243,6 +243,7 @@ Kapan Menggunakan Bootstrap atau Tailwind:
 9. Mengubah button yang ada di main dengan menggunkan class Button (btn) dari bootstrap.
 
 # Tugas 6
+http://clarence-grady-tugas.pbp.cs.ui.ac.id/
 ## 1. Jelaskan perbedaan antara asynchronous programming dengan synchronous programming.
 - Synchronous programming adalah proses yang berjalan secara berurutan, satu per satu. Jika ada proses yang membutuhkan waktu lama, maka proses lainnya harus menunggu hingga proses tersebut selesai.
 - Asynchronous programming adalah proses yang berjalan secara bersamaan. Jika ada proses yang membutuhkan waktu lama, maka proses lainnya tidak perlu menunggu hingga proses tersebut selesai.
